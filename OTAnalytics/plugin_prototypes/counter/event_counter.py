@@ -174,7 +174,7 @@ class CountsProcessor:
         intervals = self.INTERVALS
         # Import Sectionlist
 
-        section_list = [section.id for section in self.SECTIONS]
+        section_list = [section.id.id for section in self.SECTIONS]
 
         # Create table template
         counts_template = pd.DataFrame()
@@ -233,7 +233,7 @@ class CountsProcessor:
         intervals = self.INTERVALS
         # Import Sectionlist
 
-        section_list = [section.id for section in self.SECTIONS]
+        section_list = [section.id.id for section in self.SECTIONS]
 
         # Create table template
         flows_template = pd.DataFrame()
@@ -268,9 +268,9 @@ class CountsProcessor:
         counts_section = self.COUNTING_TABLE
 
         # Set the time format for plotting
-        counts_section["time_interval"] = self._set_time_format(
+        """counts_section["time_interval"] = self._set_time_format(
             counts_section["time_interval"], self.TIME_FORMAT
-        )
+        )"""
 
         # % Create counting plot
         fig = px.bar(
@@ -347,10 +347,10 @@ class CountsProcessor:
                     directed=True,
                     show=False,
                 )
-                times = self._set_time_format(
+                """times = self._set_time_format(
                     pd.Series(time_intervals), self.TIME_FORMAT
-                )
+                )"""
                 axs_ij.set_title(
-                    f"Time Interval: {times[i]},\nRoad User: {road_user_types[j]}",
+                    f"Time Interval: {pd.Series(time_intervals)[i]},\nRoad User: {road_user_types[j]}",
                     loc="Left",
                 )
